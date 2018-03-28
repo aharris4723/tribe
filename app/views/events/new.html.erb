@@ -1,0 +1,8 @@
+<h1>events new form</h1>
+
+<%= form_for @event do |f| %>
+  
+<div>Title:<%= f.text_field :title %></div><br>
+<div>Event: <%= f.text_area :content %></div><br>
+	<%= f.submit %>
+<% end %>

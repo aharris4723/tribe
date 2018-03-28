@@ -1,0 +1,19 @@
+<h1>comments show</h1>
+<%= form_with(model: @comment, local: true) do |c| %>
+<div id='commentForm'>
+    <div class='c_form'><%=c.text_area :body%></div>
+    <div class='c_form'><%=c.hidden_field event_id, :value => @event.id %></div>
+    <div class='c_form'><%=c.submit %></div>
+    <% end %>
+</div>
+
+
+
+<br>
+<% @events.comments.each do |c| %>
+<div>
+    <div><%= c.body %></div>
+    <div id='deleteComm'><%= link_to 'Delete', "/comments/#{c.id}", method: :delete %></div>
+</div>
+
+<% end %>

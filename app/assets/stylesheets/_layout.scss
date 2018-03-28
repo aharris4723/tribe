@@ -1,0 +1,44 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: white;
+}
+
+h1{
+	font-family: 'Bungee Inline', cursive;
+	font-size: 70pt;
+	text-align: center;
+	text-shadow: 2px 2px red;
+	border-top:2px solid black;
+	border-bottom:2px solid black;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 3%;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    text-align: center;
+}
+
+li {
+    float: left;
+    text-align: center;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}

@@ -1,0 +1,25 @@
+<h2>event show page:</h2>
+<%= @event.title %>
+<%= form_with(model: @comment, local: true) do |c| %>
+<div>
+    <div><%=c.text_area :content%></div>
+     <div><% c.hidden_field :event_id, :value => @event.id %></div>
+   
+    <div><%=c.submit %></div>
+    <% end %>
+</div>
+
+
+
+<br>
+<% @comments.each do |c| %>
+<div>
+    <div><a href="<%= "/comments/#{c.id}/edit" %>"><%= c.content %></a></div>
+    
+    <div><%= link_to 'Delete', "/comments/#{c.id}", method: :delete %></div>
+</div>
+
+<% end %>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

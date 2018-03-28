@@ -1,0 +1,23 @@
+<h1>comments index</h1>
+<div id="comments-section">
+ 
+ <% @comments.each do |c| %>
+     <p id="comments"><%= c.content %></p>
+        <% end %>
+
+<h1 id="create-a-comment">COMMENT</h1>
+
+  
+  <%= form_for Comment.new do |f| %>
+
+<div id="comment-wrapper">
+  
+  <div><%= f.text_area :content %></div>
+  <div><%= f.submit %></div>
+        <% end %>
+
+</div>
+</div>
+
+
+
