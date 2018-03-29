@@ -9,12 +9,8 @@ class EventsController < ApplicationController
   end
 
   def show
-  	# @event = Event.find(params[:id])
-   @events = Event.all
    @comments = Comment.all
-   @comment = Comment.new
-   #  @user = current_user
-   # @event = Event.find(params[:id])
+   @comment = Comment.new  
    @event = Event.find(params[:id])
    
   end
@@ -71,4 +67,3 @@ class EventsController < ApplicationController
       params.require(:event).permit(:name, :title, :content, :user_id)
     end
 end
-

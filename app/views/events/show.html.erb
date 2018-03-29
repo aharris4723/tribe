@@ -1,14 +1,15 @@
 <h2>event show page:</h2>
 <%= @event.title %>
+
 <%= form_with(model: @comment, local: true) do |c| %>
 <div>
     <div><%=c.text_area :content%></div>
-     <div><% c.hidden_field :event_id, :value => @event.id %></div>
+     <div><%= c.hidden_field :event_id, :value => @event.id %></div>
    
     <div><%=c.submit %></div>
     <% end %>
 </div>
-
+<hr>
 
 
 <br>

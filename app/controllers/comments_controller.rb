@@ -4,28 +4,26 @@ def index
     end
 
     def new
-      
-        @event = Event.find(params[:id])
+        @user = User.find(current_user.id)
+        @event = Event.find(params[:event_id])
         @comment = Comment.new
     end
 
-    def create 
-     	# event = Event.find(params[:id])       
-        comment = Comment.new(comment_params)      
+    def create
+
+        user = User.find(current_user.id)
+        comment = Comment.new(comment_params)
         comment.user_id = current_user.id
-       
-       
-        if comment.save
+        if comment.save!
             flash[:message] = 'Your comment was posted'
             redirect_to "/events/#{comment.event_id}"
         else
             flash[:message] = 'try again'
-            render 'comments/new'
+            render 'comments/'
         end
     end
 
     def show
-    	@event = Event.find_by_id(params[:id])
         @comment = Comment.find_by_id(params[:id])
     end
 
@@ -57,7 +55,6 @@ private
 def comment_params
     params.require(:comment).permit(:content, :user_id, :event_id)
 end
-
 
 
 end
