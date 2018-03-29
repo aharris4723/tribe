@@ -11,7 +11,6 @@
 </div>
 <hr>
 
-
 <br>
 <% @comments.each do |c| %>
 <div>
@@ -22,5 +21,29 @@
 
 <% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%if @test != nil %>
+    <%= form_tag(new_event_path(@test), method: "event", :id => "add_event") do %>
+        <select id="event_id">
+	        <% @calendar_list.items.each do |calendar| %>
+	            <% if calendar.access_role == 'owner' %>
+	                <option value="<%= calendar.id %>"><%= calendar.summary %></option>
+	            <% end%>
+	        <% end %>
+        </select>
+        <input type="hidden" name="event_id" value="<%= @event_id%>"> 
+        <%= submit_tag("Add event") %>
+        <% end %>
+		<%= form_tag(redirect_path, method: "get") do %>             
+		    <%= submit_tag "Switch Google Account" %>
+		<%end%>
+<% else %>	
+
+
+    <%= form_tag(redirect_path, method: "get") do %>             
+        <%= submit_tag "Add It to Google Calendar" %>
+    <%end%> 
+
+
+
+<%end%>	
+
